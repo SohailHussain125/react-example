@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import { useState } from 'react';
+import {
+  BrowserRouter ,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Auth from './Component/Auth';
+import Dashboard from './Component/Dashboard'
 
 function App() {
+  const [isLoginScreen, setIsLoginScreen] = useState(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Auth />}/>
+         <Route exact path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
